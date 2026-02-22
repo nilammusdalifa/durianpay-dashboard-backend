@@ -56,8 +56,8 @@ func seedUsers(repo *ar.InMemoryUserRepo) {
 		password string
 		role     string
 	}{
-		{"cs@test.com", "abc", "cs"},
-		{"operation@test.com", "abc", "operation"},
+		{"cs@test.com", "password", "cs"},
+		{"operation@test.com", "password", "operation"},
 	}
 	for _, u := range users {
 		hash, err := bcrypt.GenerateFromPassword([]byte(u.password), bcrypt.DefaultCost)
@@ -81,7 +81,7 @@ func seedPayments() []entity.Payment {
 		"Traveloka", "Tiket.com", "Pegipegi", "RedDoorz", "OYO",
 	}
 	statuses := []string{"completed", "processing", "failed"}
-	weights := []int{6, 2, 2} // 60% / 20% / 20%
+	weights := []int{6, 2, 2}
 
 	rng := rand.New(rand.NewSource(42))
 	pickStatus := func() string {
